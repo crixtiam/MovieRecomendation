@@ -51,4 +51,18 @@ class MoviesDataSource {
 
         return Result.Success(moviepostserver_list)
     }
+
+
+
+    fun set_score(score:Int,title:String){
+        Log.d("scoredatasource",score.toString() + title)
+        val database = Firebase.database
+        val myRef = database.getReference("Scores/$title}")
+
+        myRef.setValue(score)
+
+
+
+    }
+
 }

@@ -5,4 +5,5 @@ import com.example.movierecomendation.Data.Model.MoviePostServer
 
 interface MoviePostRepo {
     suspend fun getMovies():Result<MutableList<MoviePostServer>>
+    fun set_score(score:Int,title:String)
 }

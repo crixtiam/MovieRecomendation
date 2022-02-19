@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_local_movies_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_star_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_star_border_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/toggle_selector.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.13" />

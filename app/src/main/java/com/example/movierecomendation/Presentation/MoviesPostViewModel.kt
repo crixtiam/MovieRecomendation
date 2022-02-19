@@ -1,5 +1,6 @@
 package com.example.movierecomendation.Presentation
 
+import android.icu.text.CaseMap
 import android.text.method.MovementMethod
 import android.util.Log
 import android.widget.Adapter
@@ -23,6 +24,13 @@ class MoviesPostViewModel(private val repo:MoviePostRepo):ViewModel() {
     }
 
     }
+
+    fun set_score_vm(score:Int, title:String){
+        Log.d("scoreviewmodel",score.toString() + title)
+        repo.set_score(score,title)
+
+    }
+
 
     class MoviePostViewmodelFactory(private val repo:MoviePostRepo):ViewModelProvider.Factory{
         override fun <T : ViewModel> create(modelClass: Class<T>): T {

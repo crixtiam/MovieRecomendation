@@ -1,22 +1,27 @@
 package com.example.movierecomendation.ui.home
 
+import android.icu.text.CaseMap
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movierecomendation.Core.Result
+import com.example.movierecomendation.Data.Model.MoviePostServer
 import com.example.movierecomendation.Data.Remote.MoviesDataSource
 import com.example.movierecomendation.Domain.MoviePostRepoImpo
 import com.example.movierecomendation.Presentation.MoviesPostViewModel
 import com.example.movierecomendation.R
 import com.example.movierecomendation.databinding.FragmentHomeBinding
+import com.example.movierecomendation.databinding.MovieRowBinding
 import com.example.movierecomendation.ui.home.Adapters.MovieAdapter
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment(R.layout.fragment_home),MovieAdapter.onClickListener {
 
     private lateinit var Adapter : MovieAdapter
     private lateinit var binding: FragmentHomeBinding
@@ -26,6 +31,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         MoviesPostViewModel.MoviePostViewmodelFactory(MoviePostRepoImpo(MoviesDataSource()))
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        Adapter = MovieAdapter(ArrayList(),this)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,7 +68,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         return@Observer
                     }
 
-                    Adapter = MovieAdapter(result.data)
+                    Adapter = MovieAdapter(result.data,this)
                     binding.rvPostList.adapter = Adapter
                 }
 
@@ -67,6 +81,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
 
+    }
+
+    override fun onClick(identifier: Int,title: String) {
+        viewModel.set_score_vm(identifier,title)
+
+        Log.d("scores","score:"+ identifier.toString()+ title)
     }
 
 }
