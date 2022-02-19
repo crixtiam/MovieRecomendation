@@ -1,5 +1,7 @@
 package com.example.movierecomendation.Data.Model
 
+import androidx.annotation.Nullable
+
 data class MoviePostServer(
-    val nameMovie: String = ""
+    val name_movie: String = ""
 )

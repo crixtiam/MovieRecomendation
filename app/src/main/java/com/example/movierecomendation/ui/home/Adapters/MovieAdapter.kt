@@ -1,6 +1,7 @@
 package com.example.movierecomendation.ui.home.Adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,9 +9,9 @@ import com.example.movierecomendation.Core.BaseViewHolder
 import com.example.movierecomendation.Data.Model.MoviePostServer
 import com.example.movierecomendation.databinding.MovieRowBinding
 
-class MovieAdapter(private val movieList: MutableList<MoviePostServer>):RecyclerView.Adapter<BaseViewHolder<*>>() {
+class MovieAdapter(private var movieList: MutableList<MoviePostServer>):RecyclerView.Adapter<BaseViewHolder<*>>() {
 
-    private var main_movie_list = movieList
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         val itemBinding =  MovieRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -29,12 +30,15 @@ class MovieAdapter(private val movieList: MutableList<MoviePostServer>):Recycler
         }
     }
 
+
+
     private inner class MovieViewHolder(
         val binding: MovieRowBinding,
         val context: Context
     ):BaseViewHolder<MoviePostServer>(binding.root){
         override fun bind(item: MoviePostServer) {
 
+            binding.txtTitulo.text = item.name_movie
         }
     }
 
