@@ -1,18 +1,18 @@
-package com.example.movierecomendation.Presentation
+package com.example.movierecomendation.Presentation.home
 
-import android.icu.text.CaseMap
-import android.text.method.MovementMethod
 import android.util.Log
-import android.widget.Adapter
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import com.example.movierecomendation.Core.Result
-import com.example.movierecomendation.Domain.MoviePostRepo
+import com.example.movierecomendation.Domain.home.MoviePostRepo
+import com.example.movierecomendation.ui.home.Adapters.MovieAdapter
 import kotlinx.coroutines.Dispatchers
 
-class MoviesPostViewModel(private val repo:MoviePostRepo):ViewModel() {
-    fun fetchMoviesRecomendations()= liveData(Dispatchers.Main){
+class MoviesPostViewModel(private val repo: MoviePostRepo):ViewModel() {
+    private lateinit var adapter:MovieAdapter
+
+    fun fetchMoviesRecomendations()= liveData(Dispatchers.IO){
         emit(Result.Loading())
         try {
             emit(repo.getMovies())
@@ -25,14 +25,14 @@ class MoviesPostViewModel(private val repo:MoviePostRepo):ViewModel() {
 
     }
 
-    fun set_score_vm(score:Int, title:String){
+    fun set_score_vm(score:Int, title:String, id_recomendation:Int){
         Log.d("scoreviewmodel",score.toString() + title)
-        repo.set_score(score,title)
+        repo.set_score(score,title,id_recomendation)
 
     }
 
 
-    class MoviePostViewmodelFactory(private val repo:MoviePostRepo):ViewModelProvider.Factory{
+    class MoviePostViewmodelFactory(private val repo: MoviePostRepo):ViewModelProvider.Factory{
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return modelClass.getConstructor(MoviePostRepo::class.java).newInstance(repo)
         }

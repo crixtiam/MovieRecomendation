@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_baseline_local_movies_24"
-              />
+                />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -59,49 +59,12 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_titulo">
 
-            <ImageView
-                android:id="@+id/star_1"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-
-                android:src="@drawable/toggle_selector"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:tint="@color/yellow_dark" />
-
-
-            <ImageView
-                android:id="@+id/star_2"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/toggle_selector"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:tint="@color/yellow_dark" />
-
-            <ImageView
-                android:id="@+id/star_3"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/toggle_selector"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:tint="@color/yellow_dark" />
-
-            <ImageView
-                android:id="@+id/star_4"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/toggle_selector"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:tint="@color/yellow_dark" />
-
-            <ImageView
-                android:id="@+id/star_5"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/toggle_selector"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:tint="@color/yellow_dark" />
-
-
+        <ImageView
+            android:id="@+id/thump_up"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_thumb_up_off_alt_24"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         </LinearLayout>
 
